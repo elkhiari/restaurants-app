@@ -6,7 +6,7 @@ import {
   BottomSheetModalProvider,
   BottomSheetView,
 } from "@gorhom/bottom-sheet";
-import debounce from "lodash.debounce"; // Ensure lodash.debounce is installed
+import debounce from "lodash.debounce";
 import i18n from "@/config/i18n";
 
 interface IParams {
@@ -31,26 +31,6 @@ const Filter = ({
 }: FilterProps) => {
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 
-  const handleCuisineChange = useCallback(
-    debounce((text: string) => {
-      setParams((prev) => ({ ...prev, cuisine: text }));
-    }, 500),
-    []
-  );
-
-  const handleMaxDistanceChange = useCallback(
-    debounce((text: string) => {
-      setParams((prev) => ({ ...prev, maxDistance: parseInt(text, 10) || 0 }));
-    }, 500),
-    []
-  );
-
-  const handleLatitudeChange = useCallback(
-    debounce((text: string) => {
-      setParams((prev) => ({ ...prev, latitude: parseFloat(text) || 0 }));
-    }, 500),
-    []
-  );
 
   const handleChange = useCallback(
     debounce((params: IParams) => {
